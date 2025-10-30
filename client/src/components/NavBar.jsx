@@ -10,6 +10,7 @@ import {
   FaRoad,
   FaStickyNote,
   FaCode,
+  FaBook,
 } from "react-icons/fa";
 import { RiMenu3Fill } from "react-icons/ri";
 import MobileMenu from "./MobileMenu";
@@ -144,6 +145,7 @@ function NavBar() {
               { to: "/roadmap", label: "Roadmaps", icon: <FaRoad /> },
               { to: "/notes", label: "Notes", icon: <FaStickyNote /> },
               { to: "/code-editor", label: "Code Editor", icon: <FaCode /> },
+              { to: "/flashcards", label: "Flashcards", icon: <FaBook /> }
             ].map(({ to, label, icon }) => (
               <NavLink
                 key={to}
@@ -153,7 +155,7 @@ function NavBar() {
                   transition-all duration-300 ease-out relative group
                   transform hover:scale-[1.02] hover:-translate-y-0.5
                   ${isActive
-                    ? "bg-primary text-white shadow-lg shadow-primary/25"
+                    ? "bg-primary dark:text-white text-black shadow-lg shadow-primary/25"
                     : isDark
                       ? "bg-gray-800/40 border border-gray-700/30 text-dark-text-primary hover:bg-primary/10 hover:text-white hover:border-primary/30 hover:shadow-md hover:shadow-primary/10"
                       : "bg-white/25 border border-white/20 text-light-text-primary hover:bg-primary/10 hover:text-black hover:border-primary/30 hover:shadow-md hover:shadow-primary/10"

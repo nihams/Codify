@@ -7,6 +7,7 @@ import contactRouter from "./routes/contactRoute.js";
 import coursesRouter from "./routes/coursesRoute.js";
 import connectDB from "./utils/db.js";
 import cors from "cors";
+import mongoose from "mongoose";
 import errorMiddleware from "./middlewares/errorMiddlewares.js";
 import userRouter from "./routes/userRoute.js";
 import router from "./routes/router.js";
@@ -22,6 +23,7 @@ import newsletterRouter from "./routes/newsletterRoute.js";
 
 import session from "express-session";
 import passport from "passport";
+import flashcardRoutes from './routes/flashcardRoutes.js';
 import { configurePassport } from "./config/passport.js";
 dotenv.config();
 
@@ -40,6 +42,7 @@ const corsOption = {
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: false,
 };
+
 app.use(cors(corsOption));
 
 // // using cors
@@ -61,7 +64,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-configurePassport();
+// configurePassport();
 app.use("/api/v1/auth", authRouter);
 app.use("/contact", contactRouter);
 app.use("/user", userRouter);
@@ -76,6 +79,7 @@ app.use("/api/todos", todoRouter);
 app.use("/api/newsletter", newsletterRouter);
 app.use("/api/questions", questionRouter);
 app.use("/api", replyRouter);
+app.use('/api/flashcards', flashcardRoutes);
 // app.get("/",)
 const PORT = process.env.PORT || 5050;
 
